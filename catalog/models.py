@@ -1,3 +1,26 @@
 from django.db import models
 
-# Create your models here.
+NULLABLE = {'blank': True, 'null': True}
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Категория')
+    description = models.TextField(**NULLABLE, verbose_name='Описание категории')
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Продукт (Вещь?)')
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'Продукт (Вешь?)'
+        verbose_name_plural = 'Продукты (Вещи?)'
